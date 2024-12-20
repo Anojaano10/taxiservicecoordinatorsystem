@@ -1,0 +1,79 @@
+CREATE TABLE customer (
+    customer_id INT,
+    username VARCHAR(50),
+    password VARCHAR(50),
+    name VARCHAR(100),
+    address VARCHAR(100),
+    pickup_place VARCHAR(100),
+    drop_place VARCHAR(100),
+    pickup_time DATETIME,
+    drop_time DATETIME,
+    booking_status VARCHAR(50),
+    phone_no VARCHAR(20)
+);
+CREATE TABLE driver (
+    driver_id VARCHAR(20),
+    username VARCHAR(50),
+    password VARCHAR(50),
+    driver_name VARCHAR(100),
+    driver_address VARCHAR(100),
+    driver_age INT,
+    salary DECIMAL(10, 2),
+    licence_no VARCHAR(50),
+    driver_status VARCHAR(50)
+);
+CREATE TABLE booking (
+    customer_id INT,
+    pickup_place VARCHAR(100),
+    drop_place VARCHAR(100),
+    pickup_time DATETIME,
+    drop_time DATETIME,
+    driver_id VARCHAR(20)
+);
+CREATE TABLE vehicle (
+    vehicle_type VARCHAR(50),
+    plate_number VARCHAR(20),
+    vehicle_model VARCHAR(100),
+    vehicle_name VARCHAR(100)
+);
+INSERT INTO customer (customer_id, username, password, name, address, pickup_place, drop_place, pickup_time, drop_time, booking_status, phone_no)
+VALUES
+    (1, 'john123', 'pass123', 'John Doe', '123 Main Street', 'Airport', 'Hotel', '2023-06-09 10:00:00', '2023-06-09 12:00:00', 'Confirmed', '1234567890'),
+    (2, 'jane456', 'securepass', 'Jane Smith', '456 Elm Street', 'Train Station', 'Office', '2023-06-09 09:30:00', '2023-06-09 10:30:00', 'Pending', '9876543210'),
+    (3, 'mike789', 'mypass321', 'Mike Johnson', '789 Oak Street', 'Bus Terminal', 'Shopping Mall', '2023-06-09 14:00:00', '2023-06-09 16:00:00', 'Confirmed', '5555555555'),
+    (4, 'sarah321', 'sarahpass', 'Sarah Brown', '321 Pine Street', 'Hotel', 'Airport', '2023-06-09 18:00:00', '2023-06-09 20:00:00', 'Completed', '9999999999'),
+    (5, 'alex987', 'pass123', 'Alex Turner', '987 Cedar Street', 'Office', 'Restaurant', '2023-06-09 12:30:00', '2023-06-09 13:30:00', 'Confirmed', '1111111111');
+INSERT INTO booking (customer_id, pickup_place, drop_place, pickup_time, drop_time, driver_id)
+VALUES
+    (1, 'Airport', 'Hotel', '2023-06-09 10:00:00', '2023-06-09 12:00:00', 'D001'),
+    (2, 'Train Station', 'Office', '2023-06-09 09:30:00', '2023-06-09 10:30:00', 'D002'),
+    (3, 'Bus Terminal', 'Shopping Mall', '2023-06-09 14:00:00', '2023-06-09 16:00:00', 'D003'),
+    (4, 'Hotel', 'Airport', '2023-06-09 18:00:00', '2023-06-09 20:00:00', 'D004'),
+    (5, 'Office', 'Restaurant', '2023-06-09 12:30:00', '2023-06-09 13:30:00', 'D005');
+INSERT INTO vehicle (vehicle_type, plate_number, vehicle_model, vehicle_name)
+VALUES
+    ('Car', 'ABC123', 'Toyota Camry', 'Camry 2022'),
+    ('SUV', 'XYZ456', 'Ford Explorer', 'Explorer 2023'),
+    ('Van', 'DEF789', 'Mercedes Sprinter', 'Sprinter 2022'),
+    ('Car', 'GHI012', 'Honda Civic', 'Civic 2021'),
+    ('Sedan', 'JKL345', 'BMW 3 Series', '3 Series 2023');
+INSERT INTO driver (driver_id, username, password, driver_name, driver_address, driver_age, salary, licence_no, driver_status)
+VALUES
+    ('D001', 'driver1', 'driverpass1', 'John Driver', '123 Main Street', 35, 2500.00, 'DL123456', 'Active'),
+    ('D002', 'driver2', 'driverpass2', 'Jane Smith', '456 Elm Street', 28, 2300.50, 'DL789012', 'Active'),
+    ('D003', 'driver3', 'driverpass3', 'Mike Johnson', '789 Oak Street', 40, 2700.75, 'DL345678', 'Inactive'),
+    ('D004', 'driver4', 'driverpass4', 'Sarah Brown', '321 Pine Street', 42, 2800.25, 'DL901234', 'Active'),
+    ('D005', 'driver5', 'driverpass5', 'Alex Turner', '987 Cedar Street', 30, 2600.00, 'DL567890', 'Active');
+CREATE TABLE Branch_details(
+Branch_name VARCHAR(50),
+Branch_id VARCHAR(20),
+Location VARCHAR(50),
+Manager VARCHAR(50),
+Phone_number INT
+);
+INSERT INTO Branch_details(Branch_name,Branch_id,Location,Manager,Phone_number)VALUES
+('Chankanai','B001','Chankanai east','Mr.Suman',0755737710),
+('Chulipuram','B002','Chulipuram east','Mr.Dilu',0775787750),
+('Inuvil','B003','Inuvil kovil road','Mr.Nive',0755747715),
+('Mallakam','B004','Mallakam petrol sett','Mr.Vaish',0775437140);
+
